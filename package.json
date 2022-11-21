@@ -4,6 +4,7 @@
   "description": "Burger image using only css.",
   "main": "main.js",
   "repository": "https://github.com/actionanand/css-burger.git",
+  "homepage": "https://actionanand.github.io/css-burger",
   "author": "Anand Raja",
   "license": "MIT",
   "private": false,
