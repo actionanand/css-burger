@@ -1,4 +1,5 @@
 const path = require('path');
+const devMode = process.env.NODE_ENV !== 'production';
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -9,7 +10,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, './build'),
-    filename: '[name].bunde.js'
+    filename: devMode ? '[name].bunde.js' : '[name].bunde.[contenthash].js'
   },
   devServer: {
     allowedHosts: [
@@ -22,7 +23,7 @@ module.exports = {
       // minify: false
     }),
     new MiniCssExtractPlugin({
-      filename: 'bundle.css'
+      filename: devMode ? 'bundle.css' :  'bundle.[contenthash].css'
     }),
     // new CopyWebpackPlugin({
     //   patterns: [
@@ -34,6 +35,16 @@ module.exports = {
   ],
   module: {
     rules: [
+      {
+        test: /\.js$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      },
       {
         // Apply rule for .sass, .scss or .css files
         test: /\.(sa|sc|c)ss$/,

@@ -1,3 +1,5 @@
 import './styles/main.scss';
 
-console.log('it\'s working');
+import './js/sample';
+
+console.log('\'main.js\' is working!');
