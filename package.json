@@ -11,7 +11,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "webpack serve --mode=development",
-    "build": "webpack --mode=production",
+    "build": "cross-env NODE_ENV=production webpack --mode=production",
     "predeploy": "yarn run build",
     "deploy": "gh-pages -d build"
   },
@@ -24,6 +24,7 @@
     "@babel/preset-env": "^7.20.2",
     "autoprefixer": "^10.4.13",
     "babel-loader": "^9.1.0",
+    "cross-env": "^7.0.3",
     "css-loader": "^6.7.2",
     "cssnano": "^5.1.14",
     "file-loader": "^6.2.0",
