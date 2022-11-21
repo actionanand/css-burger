@@ -10,6 +10,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, './build'),
+    publicPath: '',
     filename: devMode ? '[name].bunde.js' : '[name].bunde.[contenthash].js'
   },
   devServer: {
